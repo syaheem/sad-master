@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAD Master — Systems Analysis & Design Study App</title>
+    <meta name="description" content="AI-powered active recall study app for Systems Analysis & Design using the Feynman Technique.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="aurora-bg">
+        <div class="aurora aurora-1"></div>
+        <div class="aurora aurora-2"></div>
+        <div class="aurora aurora-3"></div>
+    </div>
+
+    <!-- SCREEN 1: Chapter Selection -->
+    <div id="screen-select" class="screen screen-active">
+        <div class="select-container">
+            <header class="select-header">
+                <div class="logo-badge">SAD Master</div>
+                <h1>Choose Your Study Mode</h1>
+                <p class="select-subtitle">Select one or more chapters to include in your session</p>
+            </header>
+
+            <div class="chapter-grid">
+                <label class="chapter-card" id="card-ch1">
+                    <input type="checkbox" class="chapter-checkbox" value="ch1" checked>
+                    <div class="chapter-card-inner">
+                        <div class="chapter-number">CH 1</div>
+                        <h3>Systems, Roles & Methodologies</h3>
+                        <p>SAD basics, SDLC, Agile, Cloud Computing, OOSAD</p>
+                        <div class="chapter-tag-row">
+                            <span class="tag">7 Topics</span>
+                            <span class="tag tag-chapter">Chapter 1</span>
+                        </div>
+                        <div class="card-check-icon">✓</div>
+                    </div>
+                </label>
+
+                <label class="chapter-card" id="card-ch2">
+                    <input type="checkbox" class="chapter-checkbox" value="ch2" checked>
+                    <div class="chapter-card-inner">
+                        <div class="chapter-number">CH 2</div>
+                        <h3>Understanding & Modelling Organizations</h3>
+                        <p>Management levels, E-R Diagrams, Use Case Modeling</p>
+                        <div class="chapter-tag-row">
+                            <span class="tag">4 Topics</span>
+                            <span class="tag tag-chapter">Chapter 2</span>
+                        </div>
+                        <div class="card-check-icon">✓</div>
+                    </div>
+                </label>
+
+                <label class="chapter-card" id="card-ch3">
+                    <input type="checkbox" class="chapter-checkbox" value="ch3" checked>
+                    <div class="chapter-card-inner">
+                        <div class="chapter-number">CH 3</div>
+                        <h3>Project Management</h3>
+                        <p>Feasibility, Hardware & Software selection, EVM</p>
+                        <div class="chapter-tag-row">
+                            <span class="tag">4 Topics</span>
+                            <span class="tag tag-chapter">Chapter 3</span>
+                        </div>
+                        <div class="card-check-icon">✓</div>
+                    </div>
+                </label>
+            </div>
+
+            <div class="select-actions">
+                <div class="select-all-toggle">
+                    <button class="btn-text" id="btn-select-all">Select All</button>
+                    <span class="divider">|</span>
+                    <button class="btn-text" id="btn-deselect-all">Deselect All</button>
+                </div>
+                <button class="btn btn-start-session" id="btn-start-session">
+                    <span>Start Study Session</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </button>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="stats-row">
+                <div class="stat-pill">
+                    <span class="stat-icon">🧠</span>
+                    <span id="stat-requests">0</span>
+                    <span class="stat-label">AI Requests Today</span>
+                </div>
+                <button class="stat-pill settings-pill" id="btn-settings">
+                    <span class="stat-icon">⚙️</span>
+                    <span class="stat-label">AI Settings</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCREEN 2: Study Session -->
+    <div id="screen-study" class="screen">
+        <div class="study-layout">
+            <!-- Sidebar -->
+            <aside class="study-sidebar">
+                <div class="sidebar-top">
+                    <button class="btn-back" id="btn-back-to-select">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+                        Back
+                    </button>
+                    <div class="sidebar-logo">SAD Master</div>
+                </div>
+
+                <div class="sidebar-progress-section">
+                    <div class="progress-ring-container">
+                        <svg class="progress-ring" viewBox="0 0 80 80">
+                            <circle class="ring-track" cx="40" cy="40" r="33"/>
+                            <circle class="ring-fill" id="ring-fill" cx="40" cy="40" r="33"/>
+                        </svg>
+                        <div class="ring-text">
+                            <span id="ring-mastered">0</span>
+                            <span class="ring-of">of</span>
+                            <span id="ring-total">0</span>
+                        </div>
+                    </div>
+                    <p class="progress-label">Topics Mastered</p>
+                </div>
+
+                <div class="sidebar-chapter-tags" id="active-chapter-tags">
+                    <!-- injected dynamically -->
+                </div>
+
+                <div class="sidebar-stat">
+                    <span class="stat-icon-sm">🧠</span>
+                    <span id="sidebar-stat-requests">0</span>
+                    <span class="sidebar-stat-label">AI Calls Today</span>
+                </div>
+            </aside>
+
+            <!-- Main Study Area -->
+            <main class="study-main">
+                <div class="phase-indicator" id="phase-indicator">
+                    <div class="phase-dot active"></div>
+                    <div class="phase-dot"></div>
+                    <div class="phase-dot"></div>
+                </div>
+
+                <div class="study-card">
+                    <div class="study-card-header">
+                        <div class="phase-chip" id="phase-badge">Phase 1: Encoding</div>
+                        <h2 class="topic-title" id="question-title">Loading...</h2>
+                        <p class="topic-hint" id="question-hint"></p>
+                    </div>
+
+                    <!-- Phase 1: Encoding -->
+                    <div id="phase-encoding" class="phase-pane">
+                        <p class="instruction">📖 Study the concepts carefully. Connect them to the hints before testing yourself.</p>
+                        <div class="encoding-list" id="encoding-list"></div>
+                        <div class="card-footer">
+                            <button class="btn btn-primary" id="btn-start-recall">I'm Ready — Test Me</button>
+                        </div>
+                    </div>
+
+                    <!-- Phase 2: Recall -->
+                    <div id="phase-recall" class="phase-pane hidden">
+                        <p class="instruction">✍️ <strong>Feynman Technique:</strong> Explain this topic in your own words as simply as possible. The AI will evaluate your understanding.</p>
+                        <textarea id="feynman-input" class="feynman-textarea" placeholder="Write your explanation here. Don't worry about numbering — just explain it naturally..."></textarea>
+                        <div class="card-footer">
+                            <button class="btn btn-primary" id="btn-evaluate">Evaluate with AI</button>
+                        </div>
+
+                        <div id="ai-loading" class="ai-loading hidden">
+                            <div class="loading-orb"></div>
+                            <p>AI is reading your explanation...</p>
+                        </div>
+
+                        <div id="evaluation-results" class="eval-results hidden">
+                            <div class="eval-header">
+                                <h3>Mastery Rating</h3>
+                                <div class="mastery-circle">
+                                    <svg viewBox="0 0 60 60">
+                                        <circle class="mastery-track" cx="30" cy="30" r="25"/>
+                                        <circle class="mastery-fill" id="mastery-ring" cx="30" cy="30" r="25"/>
+                                    </svg>
+                                    <span id="mastery-score" class="mastery-num">0%</span>
+                                </div>
+                            </div>
+                            <ul id="feedback-list" class="feedback-list"></ul>
+                            <div class="card-footer mt-4">
+                                <button class="btn btn-primary" id="btn-proceed-meta">Continue →</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Phase 3: Metacognition -->
+                    <div id="phase-metacognition" class="phase-pane hidden">
+                        <div class="meta-content">
+                            <div class="meta-emoji">🤔</div>
+                            <h3>Rate Your Confidence</h3>
+                            <p>How well did you actually know this? Be honest — it helps your spaced repetition!</p>
+                            <div class="meta-buttons">
+                                <button class="btn btn-hard" id="btn-meta-hard">
+                                    <span class="btn-icon-left">😓</span>
+                                    Hard — Review Again
+                                </button>
+                                <button class="btn btn-easy" id="btn-meta-easy">
+                                    <span class="btn-icon-left">🎯</span>
+                                    Got It — Mastered!
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Completion Overlay -->
+        <div id="completion-overlay" class="completion-overlay hidden">
+            <div class="completion-card">
+                <div class="confetti-emoji">🎉</div>
+                <h2>Session Complete!</h2>
+                <p>You've mastered all selected topics. Outstanding work!</p>
+                <div class="completion-actions">
+                    <button class="btn btn-primary" id="btn-restart">Study Again</button>
+                    <button class="btn btn-ghost" id="btn-change-chapter">Change Chapters</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal-overlay hidden">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2>⚙️ AI Settings</h2>
+                <button class="modal-close" id="btn-close-settings">✕</button>
+            </div>
+            <p class="modal-desc">Power the AI evaluation with a free Google Gemini API Key.</p>
+            <ol class="api-steps">
+                <li>Visit <a href="https://aistudio.google.com/app/apikey" target="_blank">Google AI Studio →</a></li>
+                <li>Sign in and click <strong>Create API Key</strong></li>
+                <li>Paste the key below — saved securely on your device</li>
+            </ol>
+            <input type="password" id="api-key-input" class="key-input" placeholder="Paste your Gemini API Key here...">
+            <div class="modal-footer">
+                <button class="btn btn-ghost" id="btn-cancel-settings">Cancel</button>
+                <button class="btn btn-primary" id="btn-save-settings">Save Key</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
