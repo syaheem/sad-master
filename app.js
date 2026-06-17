@@ -23,11 +23,29 @@ const studyTopics = {
         { question: "5 Steps in Choosing Hardware & Software", acronymHint: "", chapter: "ch3", answers: [{ keyword: "Inventory", fullText: "Inventory computer hardware" }, { keyword: "Estimate", fullText: "Estimate workloads" }, { keyword: "Evaluate", fullText: "Evaluate available hardware/software" }, { keyword: "vendor", fullText: "Choose the vendor" }, { keyword: "Acquire", fullText: "Acquire the equipment" }] },
         { question: "3 Software Alternatives", acronymHint: "", chapter: "ch3", answers: [{ keyword: "custom", fullText: "Created custom software" }, { keyword: "COTS", fullText: "Purchased COTS (commercial off-the-shelf)" }, { keyword: "SaaS", fullText: "Software as a service (SaaS)" }] },
         { question: "4 EVM Measures (Earned Value Management)", acronymHint: "", chapter: "ch3", answers: [{ keyword: "BAC", fullText: "Budget at completion (BAC)" }, { keyword: "PV", fullText: "Planned value (PV)" }, { keyword: "AC", fullText: "Actual Cost (AC)" }, { keyword: "EV", fullText: "Earned value (EV)" }] }
+    ],
+    ch4: [
+        { question: "3 Key Interactive Methods", acronymHint: "", chapter: "ch4", answers: [{ keyword: "Interviewing", fullText: "Interviewing" }, { keyword: "JAD", fullText: "Joint Application Design (JAD)" }, { keyword: "Questionnaires", fullText: "Questionnaires" }] },
+        { question: "5 Steps in Interview Preparation", acronymHint: "", chapter: "ch4", answers: [{ keyword: "Read", fullText: "Read background material" }, { keyword: "Objectives", fullText: "Establish interview objectives" }, { keyword: "Decide", fullText: "Decide whom to interview" }, { keyword: "Prepare", fullText: "Prepare the interviewee" }, { keyword: "Questions", fullText: "Decide on question types and structure" }] },
+        { question: "JAD Benefits", acronymHint: "", chapter: "ch4", answers: [{ keyword: "Time", fullText: "Saves time" }, { keyword: "Development", fullText: "Rapid development" }, { keyword: "Ownership", fullText: "Improved ownership of the system" }, { keyword: "Creative", fullText: "Creative idea production" }] },
+        { question: "Questionnaire Uses", acronymHint: "", chapter: "ch4", answers: [{ keyword: "Geographically", fullText: "Geographically dispersed users" }, { keyword: "Large", fullText: "Large number of people involved" }, { keyword: "Anonymous", fullText: "Need for anonymous responses" }] }
+    ],
+    ch5: [
+        { question: "3 Unobtrusive Methods", acronymHint: "", chapter: "ch5", answers: [{ keyword: "Sampling", fullText: "Sampling" }, { keyword: "Investigation", fullText: "Investigation" }, { keyword: "Observation", fullText: "Observation" }] },
+        { question: "4 Steps of Sampling", acronymHint: "", chapter: "ch5", answers: [{ keyword: "Data", fullText: "Determine data to collect" }, { keyword: "Population", fullText: "Determine population to sample" }, { keyword: "Type", fullText: "Choose type of sample" }, { keyword: "Size", fullText: "Decide sample size" }] },
+        { question: "Types of Sampling", acronymHint: "", chapter: "ch5", answers: [{ keyword: "Convenience", fullText: "Convenience sample" }, { keyword: "Purposive", fullText: "Purposive sample" }, { keyword: "Simple", fullText: "Simple random sample" }, { keyword: "Complex", fullText: "Complex random sample" }] },
+        { question: "STROBE Elements", acronymHint: "", chapter: "ch5", answers: [{ keyword: "Location", fullText: "Office location" }, { keyword: "Desk", fullText: "Desk placement" }, { keyword: "Equipment", fullText: "Stationary equipment" }, { keyword: "Props", fullText: "Props" }, { keyword: "Lighting", fullText: "Lighting and color" }, { keyword: "Clothing", fullText: "Clothing worn by decision makers" }] }
+    ],
+    ch6: [
+        { question: "4 Kinds of Prototypes", acronymHint: "", chapter: "ch6", answers: [{ keyword: "Patched-Up", fullText: "Patched-Up Prototype" }, { keyword: "Nonoperational", fullText: "Nonoperational Prototype" }, { keyword: "First-of-a-Series", fullText: "First-of-a-Series Prototype" }, { keyword: "Selected", fullText: "Selected Features Prototype" }] },
+        { question: "Guidelines for Developing a Prototype", acronymHint: "", chapter: "ch6", answers: [{ keyword: "Manageable", fullText: "Work in manageable modules" }, { keyword: "Rapidly", fullText: "Build the prototype rapidly" }, { keyword: "Modify", fullText: "Modify the prototype" }, { keyword: "Stress", fullText: "Stress the user interface" }] },
+        { question: "Agile Core Practices", acronymHint: "", chapter: "ch6", answers: [{ keyword: "Release", fullText: "Short releases" }, { keyword: "Week", fullText: "40-hour work week" }, { keyword: "Onsite", fullText: "Onsite customer" }, { keyword: "Pair", fullText: "Pair programming" }] },
+        { question: "Scrum Roles", acronymHint: "", chapter: "ch6", answers: [{ keyword: "Master", fullText: "Scrum Master" }, { keyword: "Owner", fullText: "Product Owner" }, { keyword: "Team", fullText: "Scrum Team" }] }
     ]
 };
 
-const chapterColors = { ch1: '#7c5cfc', ch2: '#22d3ee', ch3: '#f472b6' };
-const chapterNames  = { ch1: 'Chapter 1', ch2: 'Chapter 2', ch3: 'Chapter 3' };
+const chapterColors = { ch1: '#7c5cfc', ch2: '#22d3ee', ch3: '#f472b6', ch4: '#fbbf24', ch5: '#34d399', ch6: '#a78bfa' };
+const chapterNames  = { ch1: 'Chapter 1', ch2: 'Chapter 2', ch3: 'Chapter 3', ch4: 'Chapter 4', ch5: 'Chapter 5', ch6: 'Chapter 6' };
 
 let topicQueue = [];
 let masteredCount = 0;
